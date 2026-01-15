@@ -7,6 +7,7 @@ import { webResponse } from "@/schema/webResponse";
 const baseUrl = process.env.NEXT_PUBLIC_AUTH_API_URL;
 
 export const loginService = async (values: z.infer<typeof loginSchema>) => {
+  
   const response = await fetch(`${baseUrl}/login`, {
     method: "POST",
     headers: {
