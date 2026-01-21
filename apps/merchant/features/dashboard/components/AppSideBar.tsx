@@ -1,3 +1,4 @@
+"use client";
 import { FC } from "react";
 
 import {
@@ -11,8 +12,15 @@ import {
   SidebarMenuItem,
 } from "@workspace/ui/components/sidebar";
 import { items } from "../constants/sideBarItems";
+import Link from "next/link";
+import { logoutService } from "@/features/login/service/loginService";
 
 const AppSidebar: FC = () => {
+  async function onClick(item: string) {
+    if (item == items.at(-1)!.title) {
+      await logoutService();
+    }
+  }
   return (
     <Sidebar>
       <SidebarContent>
@@ -22,11 +30,14 @@ const AppSidebar: FC = () => {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                  <SidebarMenuButton
+                    asChild
+                    onClick={() => onClick(item.title)}
+                  >
+                    <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

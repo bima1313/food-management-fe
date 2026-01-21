@@ -1,4 +1,4 @@
-import { Home, Settings } from "lucide-react";
+import { Home } from "lucide-react";
 import { MdRestaurant, MdManageAccounts, MdLogout } from "react-icons/md";
 
 export const items = [
@@ -16,11 +16,6 @@ export const items = [
     title: "Profile",
     url: "/dashboard/profile",
     icon: MdManageAccounts,
-  },
-  {
-    title: "Settings",
-    url: "/dashboard/settings",
-    icon: Settings,
   },
   {
     title: "Logout",
